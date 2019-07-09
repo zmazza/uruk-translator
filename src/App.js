@@ -1,11 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+// Components
+import Container from './Components/ApplicationContainer/ApplicationContainer.component'
 
 function App() {
   return (
     <div className="App">
-      <p>Uruk Translator</p>
+      <Container/>
     </div>
   );
 }
