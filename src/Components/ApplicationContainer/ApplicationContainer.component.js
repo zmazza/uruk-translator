@@ -40,8 +40,6 @@ translateMessage = () => {
   let translatedSentence = this.state.englishTranslation;
 
   Object.keys(translationData).map(word => {
-    console.log("Word: " + word + " Orc Word: " + translationData[word])
-    
     translatedSentence = translatedSentence.toLowerCase().replace(new RegExp("\\b"+word+"\\b", "gi"), translationData[word]);
   })
 
