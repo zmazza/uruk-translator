@@ -7,6 +7,10 @@
     "crossbow bolt": "chu'lursk'a",
     "female human": "fe-oomie",
     "female orc": "fe-urk",
+    "chicken egg": "chik'n bal",
+    "chicken eggs": "chik'n balz",
+    "egg": "chik'n bal",
+    "eggs": "chik'n balz",
     "hello": "greebas",
     "greetings": "greebas", 
     "thank you": "dabu",
@@ -92,5 +96,9 @@
     "haha": "hohoho",
     "ha": "hohoho",
     "now": "jat",
+    "can": "cahn",
+    "chicken": "chik'n",
+    "to": "du",
+    "fondle": "ghraazp",
     "i'll": "ee'll"
 }
