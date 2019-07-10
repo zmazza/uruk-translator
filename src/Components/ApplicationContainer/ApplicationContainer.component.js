@@ -33,7 +33,7 @@ onClickTranslationHandler = () => {
   let translatedSentence = this.state.englishTranslation;
 
   Object.keys(translationData).map(word => {
-    translatedSentence = translatedSentence.replace(translationData[word], word);
+    translatedSentence = translatedSentence.toLowerCase().replace(translationData[word], word);
   })
 
   this.setState({
