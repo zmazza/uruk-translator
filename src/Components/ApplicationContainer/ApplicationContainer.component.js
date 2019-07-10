@@ -29,7 +29,14 @@ class ApplicationContainer extends Component {
     }
 }
 
-onClickTranslationHandler = () => {
+translateMessageWithEnterKeyHandler = (event) => {
+    if(event.key === "Enter") {
+    this.translateMessage()
+    }
+  
+}
+
+translateMessage = () => {
   let translatedSentence = this.state.englishTranslation;
 
   Object.keys(translationData).map(word => {
@@ -48,7 +55,7 @@ onClickTranslationHandler = () => {
         <CssBaseline />
         <Container maxWidth='lg'>
           <Header />
-          <LanguageInputField translateMessage={this.onClickTranslationHandler} onChangeHandler={this.updateEnglishTranslationValue}/>
+          <LanguageInputField translateMessageWithEnterKeyHandler={this.translateMessageWithEnterKeyHandler} translateMessage={this.translateMessage} onChangeHandler={this.updateEnglishTranslationValue}/>
           { this.state.translatedMessage
             ? <TranslatedMessageField isMessageTranslated={this.state.messageTranslated} TranslatedMessage={this.state.translatedMessage}/>
 

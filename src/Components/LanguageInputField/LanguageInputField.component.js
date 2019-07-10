@@ -30,9 +30,10 @@ const LanguageInputField = (props) => {
   const classes = useStyles();
 
   return (
-    <form className={classes.container} noValidate autoComplete="off">
+    <div className={classes.container} >
       <TextField
         onChange={props.onChangeHandler}
+        onKeyPress={props.translateMessageWithEnterKeyHandler}
         id="standard-full-width"
         label="English Input"
         style={{ margin: 8 }}
@@ -47,7 +48,7 @@ const LanguageInputField = (props) => {
       <Button onClick={props.translateMessage} color="primary" className={classes.button}>
         Translate!
       </Button>
-    </form>
+    </div>
   );
 }
 
