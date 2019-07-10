@@ -22,7 +22,7 @@ class ApplicationContainer extends Component {
       englishTranslation: event.target.value
     })
 
-    if(event.target.value.length == 0) {
+    if(event.target.value.length === 0) {
       this.setState({
         messageTranslated: false
       })
