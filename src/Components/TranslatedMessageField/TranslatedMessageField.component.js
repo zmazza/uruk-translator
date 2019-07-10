@@ -24,7 +24,7 @@ const TranslatedMessageField = (props) => {
         <div className={classes.container}>
         <Fade in={props.isMessageTranslated}>
           <Paper elevation={4} className={classes.paper}>
-            Nuw ur spekin bloochok-hai!: <br/> {props.TranslatedMessage}
+            Jat uu blah'n urk ob da blodchuk-hai!: <br/> {props.TranslatedMessage}
           </Paper>
         </Fade>
       </div>

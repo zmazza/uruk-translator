@@ -37,7 +37,7 @@ const LanguageInputField = (props) => {
         id="standard-full-width"
         label="English Input"
         style={{ margin: 8 }}
-        helperText="Enter what you would like to translate in English here."
+        helperText="Enter what you would like to translate to Bloodchok-hai here."
         fullWidth
         margin="normal"
         InputLabelProps={{
