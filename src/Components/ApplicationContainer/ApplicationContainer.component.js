@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ReactGA from 'react-ga'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Container from '@material-ui/core/Container'
 import Header from '../Header/Header.component'
@@ -7,9 +8,17 @@ import TranslatedMessageField from '../TranslatedMessageField/TranslatedMessageF
 
 const translationData = require('../../data/uruk-translation-data.json')
 
+function initializeReactGA() {
+  ReactGA.initialize('UA-143698655-1')
+  ReactGA.pageview('/homepage')
+}
+
+
 class ApplicationContainer extends Component {
   constructor(props) {
     super(props);
+    initializeReactGA()
+
     this.state = ({
       englishTranslation: "test",
       messageTranslated: false,
@@ -47,6 +56,12 @@ translateMessage = () => {
     translatedMessage: translatedSentence,
     messageTranslated: true
   })
+
+ReactGA.event({
+  category: 'Translation',
+  action: 'Message Translated'
+})
+
 }
 
   render () {
