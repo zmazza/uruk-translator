@@ -8,61 +8,64 @@ import TranslatedMessageField from '../TranslatedMessageField/TranslatedMessageF
 
 const translationData = require('../../data/uruk-translation-data.json')
 
-function initializeReactGA() {
+function initializeReactGA () {
   ReactGA.initialize('UA-143698655-1')
   ReactGA.pageview('/homepage')
 }
 
-
 class ApplicationContainer extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     initializeReactGA()
 
-    this.state = ({
-      englishTranslation: "test",
+    this.state = {
+      englishTranslation: 'test',
       messageTranslated: false,
-      translatedMessage: ""
-    })
+      translatedMessage: ''
+    }
   }
 
-  updateEnglishTranslationValue = (event) => {
+  updateEnglishTranslationValue = event => {
     this.setState({
       englishTranslation: event.target.value
     })
 
-    if(event.target.value.length === 0) {
+    if (event.target.value.length === 0) {
       this.setState({
         messageTranslated: false
       })
     }
-}
+  }
 
-translateMessageWithEnterKeyHandler = (event) => {
-    if(event.key === "Enter") {
-    this.translateMessage()
+  translateMessageWithEnterKeyHandler = event => {
+    if (event.key === 'Enter') {
+      this.translateMessage()
     }
-  
-}
+  }
 
-translateMessage = () => {
-  let translatedSentence = this.state.englishTranslation;
+  translateMessage = () => {
+    let translatedSentence = this.state.englishTranslation
 
-  Object.keys(translationData).map(word => {
-    translatedSentence = translatedSentence.toLowerCase().replace(new RegExp("\\b"+word+"\\b", "gi"), translationData[word]);
-  })
+    if (this.state.englishTranslation.toLowerCase() == 'rick roll') {
+      translatedSentence = "nebur gun gib uu up, nebur gun et uu duwn, nebur gun run arund an dezert uu, nebur gon mak u cri, nebur gun BLAH gug'ye, nebur gun tel a lye agh klomp uu"
+    } else {
+      Object.keys(translationData).map(word => {
+        translatedSentence = translatedSentence
+          .toLowerCase()
+          .replace(new RegExp('\\b' + word + '\\b', 'gi'), translationData[word])
+      })
+    }
 
-  this.setState({
-    translatedMessage: translatedSentence,
-    messageTranslated: true
-  })
+    this.setState({
+      translatedMessage: translatedSentence,
+      messageTranslated: true
+    })
 
-ReactGA.event({
-  category: 'Translation',
-  action: 'Message Translated'
-})
-
-}
+    ReactGA.event({
+      category: 'Translation',
+      action: 'Message Translated'
+    })
+  }
 
   render () {
     return (
@@ -70,12 +73,21 @@ ReactGA.event({
         <CssBaseline />
         <Container maxWidth='lg'>
           <Header />
-          <LanguageInputField translateMessageWithEnterKeyHandler={this.translateMessageWithEnterKeyHandler} translateMessage={this.translateMessage} onChangeHandler={this.updateEnglishTranslationValue}/>
-          { this.state.translatedMessage
-            ? <TranslatedMessageField isMessageTranslated={this.state.messageTranslated} TranslatedMessage={this.state.translatedMessage}/>
-
-            : <div></div>
-          }
+          <LanguageInputField
+            translateMessageWithEnterKeyHandler={
+              this.translateMessageWithEnterKeyHandler
+            }
+            translateMessage={this.translateMessage}
+            onChangeHandler={this.updateEnglishTranslationValue}
+          />
+          {this.state.translatedMessage ? (
+            <TranslatedMessageField
+              isMessageTranslated={this.state.messageTranslated}
+              TranslatedMessage={this.state.translatedMessage}
+            />
+          ) : (
+            <div />
+          )}
         </Container>
       </React.Fragment>
     )
